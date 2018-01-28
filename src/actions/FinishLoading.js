@@ -1,7 +1,5 @@
-const FinishLoading = () => {
-  return {
-    type: 'FINISHED_LOADING'
-  };
-};
+const FinishLoading = () => ({
+  type: 'FINISHED_LOADING',
+});
 
 export default FinishLoading;

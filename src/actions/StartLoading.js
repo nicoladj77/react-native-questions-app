@@ -1,7 +1,5 @@
-const StartLoading = () => {
-  return {
-    type: 'STARTED_LOADING'
-  };
-};
+const StartLoading = () => ({
+  type: 'STARTED_LOADING',
+});
 
 export default StartLoading;

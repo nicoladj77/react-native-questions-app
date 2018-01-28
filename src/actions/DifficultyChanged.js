@@ -1,8 +1,6 @@
-const DifficultyChanged = (difficulty) => {
-  return {
-    type: 'DIFFICULTY_CHANGED',
-    payload: difficulty
-  };
-};
+const DifficultyChanged = difficulty => ({
+  type: 'DIFFICULTY_CHANGED',
+  payload: difficulty,
+});
 
 export default DifficultyChanged;

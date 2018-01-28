@@ -5,9 +5,9 @@ const initialState = {
 const ColorReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'STARTED_LOADING':
-      return {...state, loading: true};
+      return { ...state, loading: true };
     case 'FINISHED_LOADING':
-      return {...state, loading: false};
+      return { ...state, loading: false };
     default:
       return state;
   }

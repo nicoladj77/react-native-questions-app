@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import NavReducer from './NavReducer';
 import DifficultyReducer from './DifficultyReducer';
 import ActivityReducer from './ActivityIndicatorReducer';

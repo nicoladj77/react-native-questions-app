@@ -1,6 +1,6 @@
 import React from 'react';
-import {addNavigationHelpers, StackNavigator} from 'react-navigation';
-import {connect} from 'react-redux'
+import { addNavigationHelpers, StackNavigator } from 'react-navigation';
+import { connect } from 'react-redux';
 
 
 import HomeScreen from '../screen/Home';
@@ -8,16 +8,16 @@ import PlayScreen from '../screen/Play';
 import EndScreen from '../screen/End';
 
 export const AppNavigator = StackNavigator({
-  Main: {screen: HomeScreen},
-  Play: {screen: PlayScreen},
-  End: {screen: EndScreen},
+  Main: { screen: HomeScreen },
+  Play: { screen: PlayScreen },
+  End: { screen: EndScreen },
 }, {
   initialRouteName: 'Main',
 });
 
-const AppWithNavigationState = ({dispatch, nav}) => (
+const AppWithNavigationState = ({ dispatch, nav }) => (
   <AppNavigator
-    navigation={addNavigationHelpers({dispatch, state: nav})}
+    navigation={addNavigationHelpers({ dispatch, state: nav })}
   />
 );
 
