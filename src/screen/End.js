@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-
+import { Button } from 'react-native-elements';
 
 import {
   View,
-  StyleSheet,
   FlatList,
-  Text
 } from 'react-native';
 
 import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
 import commonStyles from '../styles/Common';
 import CorrectAnswer from '../components/CorrectAnswer';
 import WrongAnswer from '../components/WrongAnswer';
@@ -16,11 +15,28 @@ import WrongAnswer from '../components/WrongAnswer';
 class EndScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: `${navigation.state.params.title}`,
-    headerLeft: <Icon
-      name="arrow-left"
-      onPress={() => { navigation.goBack(); }}
-    />,
+    headerLeft: null,
   });
+
+  constructor() {
+    super();
+    this.navigateToHome = this.navigateToHome.bind(this);
+    this.resetNavigation = this.resetNavigation.bind(this);
+  }
+
+  resetNavigation(targetRoute) {
+    const resetAction = NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({ routeName: targetRoute }),
+      ],
+    });
+    this.props.navigation.dispatch(resetAction);
+  }
+
+  navigateToHome() {
+    this.resetNavigation('Main');
+  }
 
   render() {
     return (
@@ -41,6 +57,9 @@ class EndScreen extends Component {
           }
           }
         />
+        <View>
+          <Button title="Start Again" onPress={this.navigateToHome} />
+        </View>
       </View>
     );
   }

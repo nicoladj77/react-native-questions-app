@@ -5,8 +5,6 @@ const initialState = {
 };
 
 const QuestionsReducers = (state = initialState, action) => {
-  console.log(state);
-  console.log(action);
   const { answers } = state;
   switch (action.type) {
     case 'SET_QUESTIONS':

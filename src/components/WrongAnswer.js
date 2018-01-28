@@ -1,15 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Answer from './Answer';
 
-
-class WrongAnswer extends Component {
-
-  render() {
-    return (
-      <Answer text={this.props.text} answer={this.props.answer} backgroundColor="red" />
-    );
-  }
-}
+const WrongAnswer = props => (
+  <Answer text={props.text} answer={props.answer} backgroundColor="red" />
+);
 
 export default WrongAnswer;

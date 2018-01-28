@@ -82,7 +82,9 @@ class PlayScreen extends Component {
       const { navigate } = this.props.navigation;
       navigate('End', { title: `${correctAnswers} correct answers!` });
     } else {
-      this.props.navigation.setParams({ title: this.props.questions[this.props.activeQuestionIndex + 1].category });
+      this.props.navigation.setParams({
+        title: this.props.questions[this.props.activeQuestionIndex + 1].category,
+      });
       this.props.SetActiveQuestion(this.props.activeQuestionIndex + 1);
     }
   }

@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Text,
   ActivityIndicator,
+  Alert,
 } from 'react-native';
 import WithQuery from 'with-query';
 
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class HomeScreen extends React.Component {
+class HomeScreen extends Component {
   static navigationOptions = {
     title: 'Welcome to the Trivia App!',
   };
@@ -88,6 +89,7 @@ class HomeScreen extends React.Component {
       .then(res => res.json())
       .then((res) => {
         const questions = res.results;
+
         if (!questions.length) {
           throw new Error('No data returned from API');
         }
@@ -100,7 +102,15 @@ class HomeScreen extends React.Component {
         navigate('Play', { title: questions[0].category });
       })
       .catch((res) => {
-        console.log(res);
+        this.props.FinishLoading();
+        Alert.alert(
+          'Error',
+          res.message,
+          [
+            { text: 'OK' },
+          ],
+          { cancelable: true },
+        );
       });
   }
 
