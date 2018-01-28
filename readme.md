@@ -1,4 +1,4 @@
-The app has been created with ```(react-native init|https://facebook.github.io/react-native/docs/getting-started.html)```
+The app has been created with ```[react-native init](https://facebook.github.io/react-native/docs/getting-started.html)```
 
 The structure is the following:
 
