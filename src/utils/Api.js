@@ -15,7 +15,13 @@ class Api {
         'Content-Type': 'application/json',
       },
     }).then(res => res.json())
-      .then(data => (data.results))
+      .then((data) => {
+        const questions = data.results;
+        questions.forEach((question, index) => {
+          questions[index].key = index;
+        });
+        return questions;
+      })
       .catch(ex => ({ ex }));
   }
 }
