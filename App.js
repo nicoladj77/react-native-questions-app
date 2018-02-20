@@ -1,25 +1,23 @@
-import React, { Component } from 'react';
-
-import {
-  StackNavigator,
-} from 'react-navigation';
+import React from 'react';
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 
 import AppReducer from './src/reducers/AppReducer';
 import AppWithNavigationState from './src/components/AppNavigator';
 
-class QuestionsApp extends React.Component {
-  store = createStore(AppReducer);
+import { middleware } from './src/utils/redux';
 
-  render() {
-    return (
-      <Provider store={this.store}>
-        <AppWithNavigationState />
-      </Provider>
-    );
-  }
-}
+const store = createStore(
+  AppReducer,
+  applyMiddleware(middleware),
+);
+
+const QuestionsApp = () => (
+  <Provider store={store}>
+    <AppWithNavigationState />
+  </Provider>
+);
+
 export default QuestionsApp;
 
