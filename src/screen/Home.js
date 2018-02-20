@@ -51,6 +51,7 @@ class HomeScreen extends React.PureComponent {
 
   static propTypes = {
     difficulty: PropTypes.number.isRequired,
+    loading: PropTypes.bool.isRequired,
     DifficultyChanged: PropTypes.func.isRequired,
     StartLoading: PropTypes.func.isRequired,
     FinishLoading: PropTypes.func.isRequired,

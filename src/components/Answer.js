@@ -1,5 +1,6 @@
 import React from 'react';
 import Entities from 'entities';
+import PropTypes from 'prop-types';
 
 import {
   View,
@@ -23,6 +24,12 @@ class Answer extends React.PureComponent {
   static navigationOptions = ({ navigation }) => ({
     title: `${navigation.state.params.title}`,
   });
+
+  static propTypes = {
+    text: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+    answer: PropTypes.string.isRequired,
+  };
 
   render() {
     const viewStyle = {
