@@ -19,6 +19,12 @@ class EndScreen extends React.PureComponent {
     headerLeft: null,
   });
 
+  static propTypes = {
+    questions: PropTypes.arrayOf(PropTypes.object).isRequired,
+    answers: PropTypes.arrayOf(PropTypes.string).isRequired,
+    navigation: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  };
+
   constructor() {
     super();
     this.navigateToHome = this.navigateToHome.bind(this);
@@ -65,12 +71,6 @@ class EndScreen extends React.PureComponent {
     );
   }
 }
-
-EndScreen.propTypes = {
-  questions: PropTypes.arrayOf(PropTypes.object).isRequired,
-  answers: PropTypes.arrayOf(PropTypes.object).isRequired,
-  navigation: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = state => ({
   questions: state.questionsReducer.questions,

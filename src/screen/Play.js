@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 import SetActiveQuestion from '../actions/SetActiveQuestion';
 import SetAnswer from '../actions/SetAnswer';
@@ -46,6 +47,15 @@ class PlayScreen extends React.PureComponent {
   static navigationOptions = ({ navigation }) => ({
     title: `${navigation.state.params.title}`,
   });
+
+  static propTypes = {
+    answers: PropTypes.arrayOf(PropTypes.string).isRequired,
+    activeQuestionIndex: PropTypes.number.isRequired,
+    SetAnswer: PropTypes.func.isRequired,
+    navigation: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+    SetActiveQuestion: PropTypes.func.isRequired,
+    questions: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
+  };
 
   constructor() {
     super();

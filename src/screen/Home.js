@@ -2,6 +2,8 @@ import React from 'react';
 import { Button, ButtonGroup } from 'react-native-elements';
 import { connect } from 'react-redux';
 import Config from 'react-native-config';
+import PropTypes from 'prop-types';
+
 import {
   View,
   StyleSheet,
@@ -45,6 +47,16 @@ const styles = StyleSheet.create({
 class HomeScreen extends React.PureComponent {
   static navigationOptions = {
     title: 'Welcome to the Trivia App!',
+  };
+
+  static propTypes = {
+    difficulty: PropTypes.number.isRequired,
+    DifficultyChanged: PropTypes.func.isRequired,
+    StartLoading: PropTypes.func.isRequired,
+    FinishLoading: PropTypes.func.isRequired,
+    SetQuestions: PropTypes.func.isRequired,
+    SetActiveQuestion: PropTypes.func.isRequired,
+    navigation: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   };
 
   constructor() {
