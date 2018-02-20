@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Entities from 'entities';
 
 import {
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class Answer extends Component {
+class Answer extends React.PureComponent {
   static navigationOptions = ({ navigation }) => ({
     title: `${navigation.state.params.title}`,
   });

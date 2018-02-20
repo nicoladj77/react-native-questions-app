@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button } from 'react-native-elements';
 import Entities from 'entities';
 import { connect } from 'react-redux';
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class PlayScreen extends Component {
+class PlayScreen extends React.PureComponent {
   static navigationOptions = ({ navigation }) => ({
     title: `${navigation.state.params.title}`,
   });

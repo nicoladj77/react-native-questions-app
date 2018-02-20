@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button, ButtonGroup } from 'react-native-elements';
 import { connect } from 'react-redux';
 import Config from 'react-native-config';
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class HomeScreen extends Component {
+class HomeScreen extends React.PureComponent {
   static navigationOptions = {
     title: 'Welcome to the Trivia App!',
   };

@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button } from 'react-native-elements';
+import PropTypes from 'prop-types';
 
 import {
   View,
@@ -12,7 +13,7 @@ import commonStyles from '../styles/Common';
 import CorrectAnswer from '../components/CorrectAnswer';
 import WrongAnswer from '../components/WrongAnswer';
 
-class EndScreen extends Component {
+class EndScreen extends React.PureComponent {
   static navigationOptions = ({ navigation }) => ({
     title: `${navigation.state.params.title}`,
     headerLeft: null,
@@ -64,6 +65,12 @@ class EndScreen extends Component {
     );
   }
 }
+
+EndScreen.propTypes = {
+  questions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  answers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  navigation: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   questions: state.questionsReducer.questions,
