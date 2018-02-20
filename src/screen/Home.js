@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, ButtonGroup } from 'react-native-elements';
 import { connect } from 'react-redux';
-import Config from 'react-native-config';
 import PropTypes from 'prop-types';
 
 import {
@@ -9,16 +8,11 @@ import {
   StyleSheet,
   Text,
   ActivityIndicator,
-  Alert,
 } from 'react-native';
-import WithQuery from 'with-query';
 
 import commonStyles from '../styles/Common';
 import DifficultyChanged from '../actions/DifficultyChanged';
-import FinishLoading from '../actions/FinishLoading';
 import StartLoading from '../actions/StartLoading';
-import SetActiveQuestion from '../actions/SetActiveQuestion';
-import SetQuestions from '../actions/SetQuestions';
 
 const styles = StyleSheet.create({
   container: {
@@ -54,10 +48,6 @@ class HomeScreen extends React.PureComponent {
     loading: PropTypes.bool.isRequired,
     DifficultyChanged: PropTypes.func.isRequired,
     StartLoading: PropTypes.func.isRequired,
-    FinishLoading: PropTypes.func.isRequired,
-    SetQuestions: PropTypes.func.isRequired,
-    SetActiveQuestion: PropTypes.func.isRequired,
-    navigation: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   };
 
   constructor() {
@@ -84,47 +74,7 @@ class HomeScreen extends React.PureComponent {
   }
 
   beginPlay() {
-    const { navigate } = this.props.navigation;
-    const url = WithQuery(Config.API_URL, {
-      type: 'boolean',
-      amount: 10,
-      difficulty: this.getDifficulty(),
-    });
-
-    this.props.StartLoading();
-
-    fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then(res => res.json())
-      .then((res) => {
-        const questions = res.results;
-
-        if (!questions.length) {
-          throw new Error('No data returned from API');
-        }
-        questions.forEach((question, index) => {
-          questions[index].key = index;
-        });
-        this.props.FinishLoading();
-        this.props.SetQuestions(questions);
-        this.props.SetActiveQuestion(0);
-        navigate('Play', { title: questions[0].category });
-      })
-      .catch((res) => {
-        this.props.FinishLoading();
-        Alert.alert(
-          'Error',
-          res.message,
-          [
-            { text: 'OK' },
-          ],
-          { cancelable: true },
-        );
-      });
+    this.props.StartLoading(this.getDifficulty());
   }
 
   render() {
@@ -165,8 +115,5 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   DifficultyChanged,
-  FinishLoading,
   StartLoading,
-  SetQuestions,
-  SetActiveQuestion,
 })(HomeScreen);

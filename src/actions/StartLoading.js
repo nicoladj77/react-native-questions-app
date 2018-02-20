@@ -1,5 +1,6 @@
-const StartLoading = () => ({
-  type: 'STARTED_LOADING',
+const StartLoading = difficulty => ({
+  type: 'FETCH_QUESTIONS',
+  payload: { difficulty },
 });
 
 export default StartLoading;

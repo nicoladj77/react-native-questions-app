@@ -18,6 +18,7 @@
     "react-navigation-redux-helpers": "^1.0.1",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
+    "redux-saga": "^0.16.0",
     "with-query": "^1.0.2"
   },
   "devDependencies": {
